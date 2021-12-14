@@ -14,3 +14,19 @@ void class_Os::Start(void){
    Activate_Task();
 }
 
+void class_Os::Shutdown(void){
+   Swc_Os.ShutdownHook();
+}
+
+void class_Os::GetResource(void){
+}
+
+void class_Os::ReleaseResource(void){
+}
+
+void class_Os::EnableAllInterrupts(void){
+}
+
+void class_Os::DisableAllInterrupts(void){
+}
+
