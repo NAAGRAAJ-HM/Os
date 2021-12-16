@@ -12,6 +12,10 @@ static void Activate_Task(void){
 void class_Os::Start(void){
    Swc_Os.StartupHook();
    Activate_Task();
+
+   while(1 /* TBD: State machine as per AUTOSAR */){
+      Swc_Os.TASK_Idle();
+   }
 }
 
 void class_Os::Shutdown(void){
