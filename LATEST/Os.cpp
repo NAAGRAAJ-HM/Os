@@ -34,3 +34,93 @@ FUNC(void, OS_CODE) class_Os::EnableAllInterrupts(void){
 FUNC(void, OS_CODE) class_Os::DisableAllInterrupts(void){
 }
 
+FUNC(void, OS_CODE) class_Os::GetCurrentApplicationID(void){
+}
+
+FUNC(void, OS_CODE) class_Os::GetISRID(void){
+}
+
+FUNC(void, OS_CODE) class_Os::CallTrustedFunction(void){
+}
+
+FUNC(void, OS_CODE) class_Os::CheckISRMemoryAccess(void){
+}
+
+FUNC(void, OS_CODE) class_Os::CheckTaskMemoryAccess(void){
+}
+
+FUNC(void, OS_CODE) class_Os::CheckObjectAccess(void){
+}
+
+FUNC(void, OS_CODE) class_Os::CheckObjectOwnership(void){
+}
+
+FUNC(void, OS_CODE) class_Os::StartScheduleTableRel(void){
+}
+
+FUNC(void, OS_CODE) class_Os::StartScheduleTableAbs(void){
+}
+
+FUNC(void, OS_CODE) class_Os::StopScheduleTable(void){
+}
+
+FUNC(void, OS_CODE) class_Os::NextScheduleTable(void){
+}
+
+FUNC(void, OS_CODE) class_Os::StartScheduleTableSynchron(void){
+}
+
+FUNC(void, OS_CODE) class_Os::SyncScheduleTable(void){
+}
+
+FUNC(void, OS_CODE) class_Os::SetScheduleTableAsync(void){
+}
+
+FUNC(void, OS_CODE) class_Os::GetScheduleTableStatus(void){
+}
+
+FUNC(void, OS_CODE) class_Os::IncrementCounter(void){
+}
+
+FUNC(void, OS_CODE) class_Os::GetCounterValue(void){
+}
+
+FUNC(void, OS_CODE) class_Os::GetElapsedValue(void){
+}
+
+FUNC(void, OS_CODE) class_Os::TerminateApplication(void){
+}
+
+FUNC(void, OS_CODE) class_Os::AllowAccess(void){
+}
+
+FUNC(void, OS_CODE) class_Os::GetApplicationState(void){
+}
+
+FUNC(void, OS_CODE) class_Os::GetNumberOfActivatedCores(void){
+}
+
+FUNC(void, OS_CODE) class_Os::GetCoreId(void){
+}
+
+FUNC(void, OS_CODE) class_Os::StartCore(void){
+}
+
+FUNC(void, OS_CODE) class_Os::StartNonAutosarCore(void){
+}
+
+FUNC(void, OS_CODE) class_Os::GetSpinlock(void){
+}
+
+FUNC(void, OS_CODE) class_Os::ReleaseSpinlock(void){
+}
+
+FUNC(void, OS_CODE) class_Os::TryToGetSpinlock(void){
+}
+
+FUNC(void, OS_CODE) class_Os::ShutdownAllCores(void){
+}
+
+FUNC(void, OS_CODE) class_Os::ControlIdle(void){
+}
+
