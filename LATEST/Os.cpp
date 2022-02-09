@@ -36,15 +36,13 @@
 /*****************************************************/
 /* OBJECTS                                           */
 /*****************************************************/
-class_Os_EcuM Os_EcuM;
-class_EcuM_Client *EcuM_Client_ptr_Os = &Os_EcuM;
 class_Os Os;
 
 /*****************************************************/
 /* FUNCTIONS                                         */
 /*****************************************************/
 static FUNC(void, OS_CODE) Activate_Task(void){
-   EcuM.StartupTwo();
+   EcuM_Init.StartupTwo();
 }
 
 FUNC(void, OS_CODE) class_Os::Start(void){
