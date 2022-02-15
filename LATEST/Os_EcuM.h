@@ -22,12 +22,14 @@
 /*****************************************************/
 /* TYPEDEFS                                          */
 /*****************************************************/
-class class_Os_EcuM : public class_EcuM_Client{
+class interface_Os_EcuM : public interface_EcuM_Client{
    public:
 /*****************************************************/
 /* FUNCTIONS                                         */
 /*****************************************************/
-      FUNC(void, OS_CODE) InitFunction(void);
+      FUNC(void, OS_CODE) InitFunction   (void);
+      FUNC(void, OS_CODE) DeInitFunction (void);
+      FUNC(void, OS_CODE) Start          (void);
 };
 
 /*****************************************************/
@@ -41,7 +43,7 @@ class class_Os_EcuM : public class_EcuM_Client{
 /*****************************************************/
 /* OBJECTS                                           */
 /*****************************************************/
-extern class_EcuM_Client *EcuM_Client_ptr_Os;
+extern interface_Os_EcuM *EcuM_Client_ptr_Os;
 
 /*****************************************************/
 /* EOF                                               */
