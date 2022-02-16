@@ -30,6 +30,7 @@ class interface_Os_EcuM : public interface_EcuM_Client{
       FUNC(void, OS_CODE) InitFunction   (void);
       FUNC(void, OS_CODE) DeInitFunction (void);
       FUNC(void, OS_CODE) Start          (void);
+      FUNC(void, OS_CODE) Shutdown       (void);
 };
 
 /*****************************************************/
