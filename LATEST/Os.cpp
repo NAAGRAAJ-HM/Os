@@ -8,7 +8,8 @@
 /*****************************************************/
 #include "module.h"
 #include "Os_EcuM.h"
-
+#include "Os_SchM.h"
+#include "Os_EcuM.h"
 #include "Os_Unused.h"
 
 #include "Swc_Os.h"
@@ -26,7 +27,9 @@
 /* TYPEDEFS                                          */
 /*****************************************************/
 class module_Os:
-      public class_module
+      public abstract_module
+   ,  public interface_Os_EcuM
+   ,  public interface_Os_SchM
    ,  public interface_Os_EcuM
 {
    public:
@@ -50,8 +53,8 @@ class module_Os:
 /*****************************************************/
 module_Os Os;
 
-interface_Os_EcuM     *EcuM_Client_ptr_Os = &Os;
-interface_SchM_Client *SchM_Client_ptr_Os = &Os;
+interface_Os_EcuM *EcuM_Client_ptr_Os = &Os;
+interface_Os_SchM *SchM_Client_ptr_Os = &Os;
 
 /*****************************************************/
 /* FUNCTIONS                                         */
