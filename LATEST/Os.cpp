@@ -12,7 +12,7 @@
 #include "Os_EcuM.h"
 #include "Os_Unused.h"
 
-#include "Swc_Os.h"
+#include "SwcServiceOs_Os.h"
 #include "EcuM_Os.h"
 
 /*****************************************************/
@@ -30,7 +30,7 @@ class module_Os:
       public abstract_module
    ,  public interface_Os_EcuM
    ,  public interface_Os_SchM
-   ,  public interface_Os_EcuM
+//   ,  public interface_Os_EcuM
 {
    public:
       FUNC(void, OS_CODE) InitFunction   (void);
@@ -78,16 +78,16 @@ FUNC(void, OS_CODE) module_Os::MainFunction(void){
 }
 
 FUNC(void, OS_CODE) module_Os::Start(void){
-   Os_Client_ptr_Swc_Os->StartupHook();
+   Os_Client_ptr_SwcServiceOs_Os->StartupHook();
    Activate_Task();
 
    while(1 /* TBD: State machine as per AUTOSAR */){
-      Os_Client_ptr_Swc_Os->TASK_Idle();
+      Os_Client_ptr_SwcServiceOs_Os->TASK_Idle();
    }
 }
 
 FUNC(void, OS_CODE) module_Os::Shutdown(void){
-   Os_Client_ptr_Swc_Os->ShutdownHook();
+   Os_Client_ptr_SwcServiceOs_Os->ShutdownHook();
 }
 
 FUNC(void, OS_CODE) class_Os_Unused::GetResource(void){
