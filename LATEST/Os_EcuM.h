@@ -27,10 +27,10 @@ class interface_Os_EcuM : public interface_EcuM_Client{
 /*****************************************************/
 /* FUNCTIONS                                         */
 /*****************************************************/
-      FUNC(void, OS_CODE) InitFunction   (void);
-      FUNC(void, OS_CODE) DeInitFunction (void);
-      FUNC(void, OS_CODE) Start          (void);
-      FUNC(void, OS_CODE) Shutdown       (void);
+      virtual FUNC(void, OS_CODE) InitFunction   (void) = 0;
+      virtual FUNC(void, OS_CODE) DeInitFunction (void) = 0;
+      virtual FUNC(void, OS_CODE) Start          (void) = 0;
+      virtual FUNC(void, OS_CODE) Shutdown       (void) = 0;
 };
 
 /*****************************************************/
