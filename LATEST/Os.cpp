@@ -28,8 +28,6 @@
 /*****************************************************/
 class module_Os:
       public abstract_module
-   ,  public interface_Os_EcuM
-   ,  public interface_Os_SchM
 //   ,  public interface_Os_EcuM
 {
    public:
@@ -51,10 +49,9 @@ class module_Os:
 /*****************************************************/
 /* OBJECTS                                           */
 /*****************************************************/
-module_Os Os;
-
-interface_Os_EcuM *EcuM_Client_ptr_Os = &Os;
-interface_Os_SchM *SchM_Client_ptr_Os = &Os;
+module_Os      Os;
+infEcuMClient* gptrinfEcuMClient_Os = &Os;
+infSchMClient* gptrinfSchMClient_Os = &Os;
 
 /*****************************************************/
 /* FUNCTIONS                                         */

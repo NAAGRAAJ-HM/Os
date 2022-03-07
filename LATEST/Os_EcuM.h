@@ -9,8 +9,6 @@
 /*****************************************************/
 #include "Compiler_Cfg_Os.h"
 
-#include "EcuM_Client.h"
-
 /*****************************************************/
 /* #DEFINES                                          */
 /*****************************************************/
@@ -22,15 +20,13 @@
 /*****************************************************/
 /* TYPEDEFS                                          */
 /*****************************************************/
-class interface_Os_EcuM : public interface_EcuM_Client{
+class interface_Os_EcuM{
    public:
 /*****************************************************/
 /* FUNCTIONS                                         */
 /*****************************************************/
-      virtual FUNC(void, OS_CODE) InitFunction   (void) = 0;
-      virtual FUNC(void, OS_CODE) DeInitFunction (void) = 0;
-      virtual FUNC(void, OS_CODE) Start          (void) = 0;
-      virtual FUNC(void, OS_CODE) Shutdown       (void) = 0;
+      virtual FUNC(void, OS_CODE) Start    (void) = 0;
+      virtual FUNC(void, OS_CODE) Shutdown (void) = 0;
 };
 
 /*****************************************************/
@@ -44,7 +40,8 @@ class interface_Os_EcuM : public interface_EcuM_Client{
 /*****************************************************/
 /* OBJECTS                                           */
 /*****************************************************/
-extern interface_Os_EcuM *EcuM_Client_ptr_Os;
+extern infEcuMClient *gptrinfEcuMClient_Os;
+extern interface_Os_EcuM     *EcuM_Client_ptr_Os;
 
 /*****************************************************/
 /* EOF                                               */
