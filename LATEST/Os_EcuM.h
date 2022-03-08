@@ -20,7 +20,7 @@
 /*****************************************************/
 /* TYPEDEFS                                          */
 /*****************************************************/
-class interface_Os_EcuM{
+class infOs_EcuM{
    public:
 /*****************************************************/
 /* FUNCTIONS                                         */
@@ -40,8 +40,8 @@ class interface_Os_EcuM{
 /*****************************************************/
 /* OBJECTS                                           */
 /*****************************************************/
-extern infEcuMClient *gptrinfEcuMClient_Os;
-extern interface_Os_EcuM     *EcuM_Client_ptr_Os;
+extern infEcuMClient* gptrinfEcuMClient_Os;
+extern infOs_EcuM*    gptrinfOs_EcuM;
 
 /*****************************************************/
 /* EOF                                               */

@@ -28,7 +28,7 @@
 /*****************************************************/
 class module_Os:
       public abstract_module
-//   ,  public interface_Os_EcuM
+   ,  public infOs_EcuM
 {
    public:
       FUNC(void, OS_CODE) InitFunction   (void);
@@ -52,6 +52,7 @@ class module_Os:
 module_Os      Os;
 infEcuMClient* gptrinfEcuMClient_Os = &Os;
 infSchMClient* gptrinfSchMClient_Os = &Os;
+infOs_EcuM*    gptrinfOs_EcuM       = &Os;
 
 /*****************************************************/
 /* FUNCTIONS                                         */
@@ -75,16 +76,16 @@ FUNC(void, OS_CODE) module_Os::MainFunction(void){
 }
 
 FUNC(void, OS_CODE) module_Os::Start(void){
-   Os_Client_ptr_SwcServiceOs_Os->StartupHook();
+   gptrinfSwcServiceOs_Os->StartupHook();
    Activate_Task();
 
    while(1 /* TBD: State machine as per AUTOSAR */){
-      Os_Client_ptr_SwcServiceOs_Os->TASK_Idle();
+      gptrinfSwcServiceOs_Os->TASK_Idle();
    }
 }
 
 FUNC(void, OS_CODE) module_Os::Shutdown(void){
-   Os_Client_ptr_SwcServiceOs_Os->ShutdownHook();
+   gptrinfSwcServiceOs_Os->ShutdownHook();
 }
 
 FUNC(void, OS_CODE) class_Os_Unused::GetResource(void){
