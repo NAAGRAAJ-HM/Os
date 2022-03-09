@@ -63,7 +63,7 @@ static FUNC(void, OS_CODE) Activate_Task(void){
 //TBD: make scope and accessibility to global
 
 //TBD: create task for EcuM startup two operations
-   Os_Client_ptr_EcuM->StartupTwo();
+   gptrinfEcuM_Os->StartupTwo();
 }
 
 FUNC(void, OS_CODE) module_Os::InitFunction(void){
