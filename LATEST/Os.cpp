@@ -7,9 +7,9 @@
 /* #INCLUDES                                         */
 /*****************************************************/
 #include "module.h"
-#include "Os_EcuM.h"
-#include "Os_SchM.h"
-#include "Os_EcuM.h"
+#include "infOs_EcuM.h"
+#include "infOs_SchM.h"
+#include "infOs_EcuM.h"
 #include "Os_Unused.h"
 
 #include "SwcServiceOs_Os.h"
@@ -33,6 +33,7 @@ class module_Os:
    public:
       FUNC(void, OS_CODE) InitFunction   (void);
       FUNC(void, OS_CODE) DeInitFunction (void);
+      FUNC(void, OS_CODE) GetVersionInfo (void);
       FUNC(void, OS_CODE) MainFunction   (void);
       FUNC(void, OS_CODE) Start          (void);
       FUNC(void, OS_CODE) Shutdown       (void);
@@ -51,6 +52,7 @@ class module_Os:
 /*****************************************************/
 module_Os      Os;
 infEcuMClient* gptrinfEcuMClient_Os = &Os;
+infDcmClient*  gptrinfDcmClient_Os  = &Os;
 infSchMClient* gptrinfSchMClient_Os = &Os;
 infOs_EcuM*    gptrinfOs_EcuM       = &Os;
 
@@ -70,6 +72,9 @@ FUNC(void, OS_CODE) module_Os::InitFunction(void){
 }
 
 FUNC(void, OS_CODE) module_Os::DeInitFunction(void){
+}
+
+FUNC(void, OS_CODE) module_Os::GetVersionInfo(void){
 }
 
 FUNC(void, OS_CODE) module_Os::MainFunction(void){
