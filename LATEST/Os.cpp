@@ -6,9 +6,8 @@
 /******************************************************************************/
 /* #INCLUDES                                                                  */
 /******************************************************************************/
-#include "infOs_Version.h"
-
 #include "module.h"
+#include "infOs_Version.h"
 #include "infOs_EcuM.h"
 #include "infOs_Dcm.h"
 #include "infOs_SchM.h"
@@ -70,9 +69,11 @@ static FUNC(void, OS_CODE) Activate_Task(void){
 }
 
 FUNC(void, OS_CODE) module_Os::InitFunction(void){
+   Os.IsInitDone = E_OK;
 }
 
 FUNC(void, OS_CODE) module_Os::DeInitFunction(void){
+   Os.IsInitDone = E_NOT_OK;
 }
 
 FUNC(void, OS_CODE) module_Os::GetVersionInfo(void){
