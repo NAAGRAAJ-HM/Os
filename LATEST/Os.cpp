@@ -7,7 +7,7 @@
 /* #INCLUDES                                                                  */
 /******************************************************************************/
 #include "module.h"
-#include "infOs_Version.h"
+#include "Os_Cfg.h"
 #include "infOs_EcuM.h"
 #include "infOs_Dcm.h"
 #include "infOs_SchM.h"
@@ -15,10 +15,19 @@
 /******************************************************************************/
 /* #DEFINES                                                                   */
 /******************************************************************************/
+#define OS_AR_RELEASE_MAJOR_VERSION                                            4
+#define OS_AR_RELEASE_MINOR_VERSION                                            3
 
 /******************************************************************************/
 /* MACROS                                                                     */
 /******************************************************************************/
+#if(OS_AR_RELEASE_MAJOR_VERSION != STD_AR_RELEASE_MAJOR_VERSION)
+   #error "Incompatible OS_AR_RELEASE_MAJOR_VERSION!"
+#endif
+
+#if(OS_AR_RELEASE_MINOR_VERSION != STD_AR_RELEASE_MINOR_VERSION)
+   #error "Incompatible OS_AR_RELEASE_MINOR_VERSION!"
+#endif
 
 /******************************************************************************/
 /* TYPEDEFS                                                                   */
@@ -77,6 +86,11 @@ FUNC(void, OS_CODE) module_Os::DeInitFunction(void){
 }
 
 FUNC(void, OS_CODE) module_Os::GetVersionInfo(void){
+#if(STD_ON == Os_DevErrorDetect)
+//TBD: API parameter check
+   Det_ReportError(
+   );
+#endif
 }
 
 FUNC(void, OS_CODE) module_Os::MainFunction(void){
