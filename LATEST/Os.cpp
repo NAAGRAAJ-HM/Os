@@ -43,6 +43,16 @@ class module_Os:
       FUNC(void, OS_CODE) MainFunction   (void);
       FUNC(void, OS_CODE) Start          (void);
       FUNC(void, OS_CODE) Shutdown       (void);
+
+   private:
+      CONST(Std_TypeVersionInfo, OS_CONST) VersionInfo = {
+            0x0000
+         ,  0xFFFF
+         ,  0x01
+         ,  '0'
+         ,  '1'
+         ,  '0'
+      };
 };
 
 /******************************************************************************/
