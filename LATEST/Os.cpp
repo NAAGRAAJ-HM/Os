@@ -7,7 +7,7 @@
 /* #INCLUDES                                                                  */
 /******************************************************************************/
 #include "module.h"
-#include "Os_Cfg.h"
+#include "CfgOs.h"
 #include "infOs_EcuM.h"
 #include "infOs_Dcm.h"
 #include "infOs_SchM.h"
