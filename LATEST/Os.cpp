@@ -6,11 +6,11 @@
 /******************************************************************************/
 /* #INCLUDES                                                                  */
 /******************************************************************************/
-#include "module.h"
-#include "CfgOs.h"
-#include "infOs_EcuM.h"
-#include "infOs_Dcm.h"
-#include "infOs_SchM.h"
+#include "module.hpp"
+#include "CfgOs.hpp"
+#include "infOs_EcuM.hpp"
+#include "infOs_Dcm.hpp"
+#include "infOs_SchM.hpp"
 
 /******************************************************************************/
 /* #DEFINES                                                                   */
@@ -75,8 +75,8 @@ CONSTP2VAR(infOs_EcuM,    OS_VAR, OS_CONST) gptrinfOs_EcuM       = &Os;
 /******************************************************************************/
 /* FUNCTIONS                                                                  */
 /******************************************************************************/
-#include "infSwcServiceOs_Os.h"
-#include "infEcuM_Os.h"
+#include "infSwcServiceOs_Os.hpp"
+#include "infEcuM_Os.hpp"
 
 static FUNC(void, OS_CODE) Activate_Task(void){
 //TBD: <generic service> arguement must contain reference to Task
@@ -119,7 +119,7 @@ FUNC(void, OS_CODE) module_Os::Shutdown(void){
    gptrinfSwcServiceOs_Os->ShutdownHook();
 }
 
-#include "Os_Unused.h"
+#include "Os_Unused.hpp"
 
 FUNC(void, OS_CODE) class_Os_Unused::GetResource(void){
 }
