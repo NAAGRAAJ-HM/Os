@@ -7,7 +7,6 @@
 /* #INCLUDES                                                                  */
 /******************************************************************************/
 #include "module.hpp"
-#include "CfgOs.hpp"
 #include "infOs_EcuM.hpp"
 #include "infOs_Dcm.hpp"
 #include "infOs_SchM.hpp"
@@ -37,40 +36,44 @@ class module_Os:
    ,  public infOs_EcuM
 {
    public:
+      module_Os(Std_TypeVersionInfo lVersionInfo) : abstract_module(lVersionInfo){
+      }
       FUNC(void, OS_CODE) InitFunction   (void);
       FUNC(void, OS_CODE) DeInitFunction (void);
-      FUNC(void, OS_CODE) GetVersionInfo (void);
       FUNC(void, OS_CODE) MainFunction   (void);
+
       FUNC(void, OS_CODE) Start          (void);
       FUNC(void, OS_CODE) Shutdown       (void);
-
-   private:
-      CONST(Std_TypeVersionInfo, OS_CONST) VersionInfo = {
-            0x0000
-         ,  0xFFFF
-         ,  0x01
-         ,  '0'
-         ,  '1'
-         ,  '0'
-      };
 };
+
+extern VAR(module_Os, OS_VAR) Os;
 
 /******************************************************************************/
 /* CONSTS                                                                     */
 /******************************************************************************/
-
-/******************************************************************************/
-/* PARAMS                                                                     */
-/******************************************************************************/
-
-/******************************************************************************/
-/* OBJECTS                                                                    */
-/******************************************************************************/
-VAR(module_Os, OS_VAR) Os;
 CONSTP2VAR(infEcuMClient, OS_VAR, OS_CONST) gptrinfEcuMClient_Os = &Os;
 CONSTP2VAR(infDcmClient,  OS_VAR, OS_CONST) gptrinfDcmClient_Os  = &Os;
 CONSTP2VAR(infSchMClient, OS_VAR, OS_CONST) gptrinfSchMClient_Os = &Os;
 CONSTP2VAR(infOs_EcuM,    OS_VAR, OS_CONST) gptrinfOs_EcuM       = &Os;
+
+/******************************************************************************/
+/* PARAMS                                                                     */
+/******************************************************************************/
+#include "CfgOs.hpp"
+
+/******************************************************************************/
+/* OBJECTS                                                                    */
+/******************************************************************************/
+VAR(module_Os, OS_VAR) Os(
+   {
+         0x0000
+      ,  0xFFFF
+      ,  0x01
+      ,  '0'
+      ,  '1'
+      ,  '0'
+   }
+);
 
 /******************************************************************************/
 /* FUNCTIONS                                                                  */
@@ -93,14 +96,6 @@ FUNC(void, OS_CODE) module_Os::InitFunction(void){
 
 FUNC(void, OS_CODE) module_Os::DeInitFunction(void){
    Os.IsInitDone = E_NOT_OK;
-}
-
-FUNC(void, OS_CODE) module_Os::GetVersionInfo(void){
-#if(STD_ON == Os_DevErrorDetect)
-//TBD: API parameter check
-   Det_ReportError(
-   );
-#endif
 }
 
 FUNC(void, OS_CODE) module_Os::MainFunction(void){
