@@ -6,7 +6,7 @@
 /******************************************************************************/
 /* #INCLUDES                                                                  */
 /******************************************************************************/
-#include "module.hpp"
+#include "Module.hpp"
 #include "infOs_EcuM.hpp"
 #include "infOs_Dcm.hpp"
 #include "infOs_SchM.hpp"
@@ -38,6 +38,9 @@ class module_Os:
    public:
       module_Os(Std_TypeVersionInfo lVersionInfo) : abstract_module(lVersionInfo){
       }
+      FUNC(void, _CODE) InitFunction(
+         CONSTP2CONST(CfgModule_TypeAbstract, _CONFIG_DATA, _APPL_CONST) lptrCfgModule
+      );
       FUNC(void, OS_CODE) InitFunction   (void);
       FUNC(void, OS_CODE) DeInitFunction (void);
       FUNC(void, OS_CODE) MainFunction   (void);
@@ -90,7 +93,19 @@ static FUNC(void, OS_CODE) Activate_Task(void){
    gptrinfEcuM_Os->StartupTwo();
 }
 
-FUNC(void, OS_CODE) module_Os::InitFunction(void){
+FUNC(void, OS_CODE) module_Os::InitFunction(
+   CONSTP2CONST(CfgOs_Type, CFGOS_CONFIG_DATA, CFGOS_APPL_CONST) lptrCfgOs
+){
+   if(NULL_PTR == lptrCfgOs){
+#if(STD_ON == Os_DevErrorDetect)
+      Det_ReportError(
+      );
+#endif
+   }
+   else{
+// check lptrCfgOs for memory faults
+// use PBcfg_Os as back-up configuration
+   }
    Os.IsInitDone = E_OK;
 }
 
