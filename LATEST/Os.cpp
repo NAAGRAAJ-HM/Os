@@ -38,10 +38,9 @@ class module_Os:
    public:
       module_Os(Std_TypeVersionInfo lVersionInfo) : abstract_module(lVersionInfo){
       }
-      FUNC(void, _CODE) InitFunction(
-         CONSTP2CONST(CfgModule_TypeAbstract, _CONFIG_DATA, _APPL_CONST) lptrCfgModule
+      FUNC(void, OS_CODE) InitFunction(
+         CONSTP2CONST(CfgModule_TypeAbstract, OS_CONFIG_DATA, OS_APPL_CONST) lptrCfgModule
       );
-      FUNC(void, OS_CODE) InitFunction   (void);
       FUNC(void, OS_CODE) DeInitFunction (void);
       FUNC(void, OS_CODE) MainFunction   (void);
 
@@ -94,23 +93,39 @@ static FUNC(void, OS_CODE) Activate_Task(void){
 }
 
 FUNC(void, OS_CODE) module_Os::InitFunction(
-   CONSTP2CONST(CfgOs_Type, CFGOS_CONFIG_DATA, CFGOS_APPL_CONST) lptrCfgOs
+   CONSTP2CONST(CfgModule_TypeAbstract, OS_CONFIG_DATA, OS_APPL_CONST) lptrCfgModule
 ){
-   if(NULL_PTR == lptrCfgOs){
+   if(E_OK == IsInitDone){
 #if(STD_ON == Os_DevErrorDetect)
       Det_ReportError(
       );
 #endif
    }
    else{
-// check lptrCfgOs for memory faults
+      if(NULL_PTR == lptrCfgModule){
+#if(STD_ON == Os_DevErrorDetect)
+         Det_ReportError(
+         );
+#endif
+      }
+      else{
+// check lptrCfgModule for memory faults
 // use PBcfg_Os as back-up configuration
+      }
+      IsInitDone = E_OK;
    }
-   Os.IsInitDone = E_OK;
 }
 
 FUNC(void, OS_CODE) module_Os::DeInitFunction(void){
-   Os.IsInitDone = E_NOT_OK;
+   if(E_OK != IsInitDone){
+#if(STD_ON == Os_DevErrorDetect)
+      Det_ReportError(
+      );
+#endif
+   }
+   else{
+      IsInitDone = E_NOT_OK;
+   }
 }
 
 FUNC(void, OS_CODE) module_Os::MainFunction(void){
