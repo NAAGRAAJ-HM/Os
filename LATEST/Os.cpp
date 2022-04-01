@@ -95,6 +95,7 @@ static FUNC(void, OS_CODE) Activate_Task(void){
 FUNC(void, OS_CODE) module_Os::InitFunction(
    CONSTP2CONST(CfgModule_TypeAbstract, OS_CONFIG_DATA, OS_APPL_CONST) lptrCfgModule
 ){
+#if(STD_ON == Os_InitCheck)
    if(E_OK == IsInitDone){
 #if(STD_ON == Os_DevErrorDetect)
       Det_ReportError(
@@ -102,6 +103,7 @@ FUNC(void, OS_CODE) module_Os::InitFunction(
 #endif
    }
    else{
+#endif
       if(NULL_PTR == lptrCfgModule){
 #if(STD_ON == Os_DevErrorDetect)
          Det_ReportError(
@@ -113,10 +115,13 @@ FUNC(void, OS_CODE) module_Os::InitFunction(
 // use PBcfg_Os as back-up configuration
       }
       IsInitDone = E_OK;
+#if(STD_ON == Os_InitCheck)
    }
+#endif
 }
 
 FUNC(void, OS_CODE) module_Os::DeInitFunction(void){
+#if(STD_ON == Os_InitCheck)
    if(E_OK != IsInitDone){
 #if(STD_ON == Os_DevErrorDetect)
       Det_ReportError(
@@ -124,11 +129,26 @@ FUNC(void, OS_CODE) module_Os::DeInitFunction(void){
 #endif
    }
    else{
+#endif
       IsInitDone = E_NOT_OK;
+#if(STD_ON == Os_InitCheck)
    }
+#endif
 }
 
 FUNC(void, OS_CODE) module_Os::MainFunction(void){
+#if(STD_ON == Os_InitCheck)
+   if(E_OK != IsInitDone){
+#if(STD_ON == Os_DevErrorDetect)
+      Det_ReportError(
+      );
+#endif
+   }
+   else{
+#endif
+#if(STD_ON == Os_InitCheck)
+   }
+#endif
 }
 
 FUNC(void, OS_CODE) module_Os::Start(void){
