@@ -118,8 +118,8 @@ FUNC(void, OS_CODE) module_Os::InitFunction(
             lptrCfg = lptrCfgModule;
          }
          else{
-// use PBcfg_CanIf as back-up configuration
-            lptrCfg = PBcfg_CanIf;
+// use PBcfgCanIf as back-up configuration
+            lptrCfg = &PBcfgOs;
          }
       }
       IsInitDone = E_OK;
