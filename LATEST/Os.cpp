@@ -31,9 +31,51 @@
 /******************************************************************************/
 /* TYPEDEFS                                                                   */
 /******************************************************************************/
+class class_Os_Functionality{
+   public:
+      FUNC(void, OS_CODE) Start                      (void);
+      FUNC(void, OS_CODE) Shutdown                   (void);
+      FUNC(void, OS_CODE) GetResource                (void);
+      FUNC(void, OS_CODE) ReleaseResource            (void);
+      FUNC(void, OS_CODE) DisableAllInterrupts       (void);
+      FUNC(void, OS_CODE) EnableAllInterrupts        (void);
+      FUNC(void, OS_CODE) GetApplicationID           (void);
+      FUNC(void, OS_CODE) GetCurrentApplicationID    (void);
+      FUNC(void, OS_CODE) GetISRID                   (void);
+      FUNC(void, OS_CODE) CallTrustedFunction        (void);
+      FUNC(void, OS_CODE) CheckISRMemoryAccess       (void);
+      FUNC(void, OS_CODE) CheckTaskMemoryAccess      (void);
+      FUNC(void, OS_CODE) CheckObjectAccess          (void);
+      FUNC(void, OS_CODE) CheckObjectOwnership       (void);
+      FUNC(void, OS_CODE) StartScheduleTableRel      (void);
+      FUNC(void, OS_CODE) StartScheduleTableAbs      (void);
+      FUNC(void, OS_CODE) StopScheduleTable          (void);
+      FUNC(void, OS_CODE) NextScheduleTable          (void);
+      FUNC(void, OS_CODE) StartScheduleTableSynchron (void);
+      FUNC(void, OS_CODE) SyncScheduleTable          (void);
+      FUNC(void, OS_CODE) SetScheduleTableAsync      (void);
+      FUNC(void, OS_CODE) GetScheduleTableStatus     (void);
+      FUNC(void, OS_CODE) IncrementCounter           (void);
+      FUNC(void, OS_CODE) GetCounterValue            (void);
+      FUNC(void, OS_CODE) GetElapsedValue            (void);
+      FUNC(void, OS_CODE) TerminateApplication       (void);
+      FUNC(void, OS_CODE) AllowAccess                (void);
+      FUNC(void, OS_CODE) GetApplicationState        (void);
+      FUNC(void, OS_CODE) GetNumberOfActivatedCores  (void);
+      FUNC(void, OS_CODE) GetCoreId                  (void);
+      FUNC(void, OS_CODE) StartCore                  (void);
+      FUNC(void, OS_CODE) StartNonAutosarCore        (void);
+      FUNC(void, OS_CODE) GetSpinlock                (void);
+      FUNC(void, OS_CODE) ReleaseSpinlock            (void);
+      FUNC(void, OS_CODE) TryToGetSpinlock           (void);
+      FUNC(void, OS_CODE) ShutdownAllCores           (void);
+      FUNC(void, OS_CODE) ControlIdle                (void);
+};
+
 class module_Os:
       public abstract_module
    ,  public infOs_EcuM
+   ,  public class_Os_Functionality
 {
    public:
       module_Os(Std_TypeVersionInfo lVersionInfo) : abstract_module(lVersionInfo){
@@ -101,6 +143,10 @@ FUNC(void, OS_CODE) module_Os::InitFunction(
    if(E_OK == IsInitDone){
 #if(STD_ON == Os_DevErrorDetect)
       Det_ReportError(
+      0 //TBD: IdModule
+   ,  0 //TBD: IdInstance
+   ,  0 //TBD: IdApi
+   ,  0 //TBD: IdError
       );
 #endif
    }
@@ -109,6 +155,10 @@ FUNC(void, OS_CODE) module_Os::InitFunction(
       if(NULL_PTR == lptrCfgModule){
 #if(STD_ON == Os_DevErrorDetect)
          Det_ReportError(
+      0 //TBD: IdModule
+   ,  0 //TBD: IdInstance
+   ,  0 //TBD: IdApi
+   ,  0 //TBD: IdError
          );
 #endif
       }
@@ -133,6 +183,10 @@ FUNC(void, OS_CODE) module_Os::DeInitFunction(void){
    if(E_OK != IsInitDone){
 #if(STD_ON == Os_DevErrorDetect)
       Det_ReportError(
+      0 //TBD: IdModule
+   ,  0 //TBD: IdInstance
+   ,  0 //TBD: IdApi
+   ,  0 //TBD: IdError
       );
 #endif
    }
@@ -149,6 +203,10 @@ FUNC(void, OS_CODE) module_Os::MainFunction(void){
    if(E_OK != IsInitDone){
 #if(STD_ON == Os_DevErrorDetect)
       Det_ReportError(
+      0 //TBD: IdModule
+   ,  0 //TBD: IdInstance
+   ,  0 //TBD: IdApi
+   ,  0 //TBD: IdError
       );
 #endif
    }
@@ -172,147 +230,106 @@ FUNC(void, OS_CODE) module_Os::Shutdown(void){
    gptrinfSwcServiceOs_Os->ShutdownHook();
 }
 
-class class_Os_Unused{
-   public:
-      FUNC(void, OS_CODE) Start                      (void);
-      FUNC(void, OS_CODE) Shutdown                   (void);
-      FUNC(void, OS_CODE) GetResource                (void);
-      FUNC(void, OS_CODE) ReleaseResource            (void);
-      FUNC(void, OS_CODE) DisableAllInterrupts       (void);
-      FUNC(void, OS_CODE) EnableAllInterrupts        (void);
-      FUNC(void, OS_CODE) GetApplicationID           (void);
-      FUNC(void, OS_CODE) GetCurrentApplicationID    (void);
-      FUNC(void, OS_CODE) GetISRID                   (void);
-      FUNC(void, OS_CODE) CallTrustedFunction        (void);
-      FUNC(void, OS_CODE) CheckISRMemoryAccess       (void);
-      FUNC(void, OS_CODE) CheckTaskMemoryAccess      (void);
-      FUNC(void, OS_CODE) CheckObjectAccess          (void);
-      FUNC(void, OS_CODE) CheckObjectOwnership       (void);
-      FUNC(void, OS_CODE) StartScheduleTableRel      (void);
-      FUNC(void, OS_CODE) StartScheduleTableAbs      (void);
-      FUNC(void, OS_CODE) StopScheduleTable          (void);
-      FUNC(void, OS_CODE) NextScheduleTable          (void);
-      FUNC(void, OS_CODE) StartScheduleTableSynchron (void);
-      FUNC(void, OS_CODE) SyncScheduleTable          (void);
-      FUNC(void, OS_CODE) SetScheduleTableAsync      (void);
-      FUNC(void, OS_CODE) GetScheduleTableStatus     (void);
-      FUNC(void, OS_CODE) IncrementCounter           (void);
-      FUNC(void, OS_CODE) GetCounterValue            (void);
-      FUNC(void, OS_CODE) GetElapsedValue            (void);
-      FUNC(void, OS_CODE) TerminateApplication       (void);
-      FUNC(void, OS_CODE) AllowAccess                (void);
-      FUNC(void, OS_CODE) GetApplicationState        (void);
-      FUNC(void, OS_CODE) GetNumberOfActivatedCores  (void);
-      FUNC(void, OS_CODE) GetCoreId                  (void);
-      FUNC(void, OS_CODE) StartCore                  (void);
-      FUNC(void, OS_CODE) StartNonAutosarCore        (void);
-      FUNC(void, OS_CODE) GetSpinlock                (void);
-      FUNC(void, OS_CODE) ReleaseSpinlock            (void);
-      FUNC(void, OS_CODE) TryToGetSpinlock           (void);
-      FUNC(void, OS_CODE) ShutdownAllCores           (void);
-      FUNC(void, OS_CODE) ControlIdle                (void);
-};
-
-FUNC(void, OS_CODE) class_Os_Unused::GetResource(void){
+FUNC(void, OS_CODE) class_Os_Functionality::GetResource(void){
 }
 
-FUNC(void, OS_CODE) class_Os_Unused::ReleaseResource(void){
+FUNC(void, OS_CODE) class_Os_Functionality::ReleaseResource(void){
 }
 
-FUNC(void, OS_CODE) class_Os_Unused::EnableAllInterrupts(void){
+FUNC(void, OS_CODE) class_Os_Functionality::EnableAllInterrupts(void){
 }
 
-FUNC(void, OS_CODE) class_Os_Unused::DisableAllInterrupts(void){
+FUNC(void, OS_CODE) class_Os_Functionality::DisableAllInterrupts(void){
 }
 
-FUNC(void, OS_CODE) class_Os_Unused::GetCurrentApplicationID(void){
+FUNC(void, OS_CODE) class_Os_Functionality::GetCurrentApplicationID(void){
 }
 
-FUNC(void, OS_CODE) class_Os_Unused::GetISRID(void){
+FUNC(void, OS_CODE) class_Os_Functionality::GetISRID(void){
 }
 
-FUNC(void, OS_CODE) class_Os_Unused::CallTrustedFunction(void){
+FUNC(void, OS_CODE) class_Os_Functionality::CallTrustedFunction(void){
 }
 
-FUNC(void, OS_CODE) class_Os_Unused::CheckISRMemoryAccess(void){
+FUNC(void, OS_CODE) class_Os_Functionality::CheckISRMemoryAccess(void){
 }
 
-FUNC(void, OS_CODE) class_Os_Unused::CheckTaskMemoryAccess(void){
+FUNC(void, OS_CODE) class_Os_Functionality::CheckTaskMemoryAccess(void){
 }
 
-FUNC(void, OS_CODE) class_Os_Unused::CheckObjectAccess(void){
+FUNC(void, OS_CODE) class_Os_Functionality::CheckObjectAccess(void){
 }
 
-FUNC(void, OS_CODE) class_Os_Unused::CheckObjectOwnership(void){
+FUNC(void, OS_CODE) class_Os_Functionality::CheckObjectOwnership(void){
 }
 
-FUNC(void, OS_CODE) class_Os_Unused::StartScheduleTableRel(void){
+FUNC(void, OS_CODE) class_Os_Functionality::StartScheduleTableRel(void){
 }
 
-FUNC(void, OS_CODE) class_Os_Unused::StartScheduleTableAbs(void){
+FUNC(void, OS_CODE) class_Os_Functionality::StartScheduleTableAbs(void){
 }
 
-FUNC(void, OS_CODE) class_Os_Unused::StopScheduleTable(void){
+FUNC(void, OS_CODE) class_Os_Functionality::StopScheduleTable(void){
 }
 
-FUNC(void, OS_CODE) class_Os_Unused::NextScheduleTable(void){
+FUNC(void, OS_CODE) class_Os_Functionality::NextScheduleTable(void){
 }
 
-FUNC(void, OS_CODE) class_Os_Unused::StartScheduleTableSynchron(void){
+FUNC(void, OS_CODE) class_Os_Functionality::StartScheduleTableSynchron(void){
 }
 
-FUNC(void, OS_CODE) class_Os_Unused::SyncScheduleTable(void){
+FUNC(void, OS_CODE) class_Os_Functionality::SyncScheduleTable(void){
 }
 
-FUNC(void, OS_CODE) class_Os_Unused::SetScheduleTableAsync(void){
+FUNC(void, OS_CODE) class_Os_Functionality::SetScheduleTableAsync(void){
 }
 
-FUNC(void, OS_CODE) class_Os_Unused::GetScheduleTableStatus(void){
+FUNC(void, OS_CODE) class_Os_Functionality::GetScheduleTableStatus(void){
 }
 
-FUNC(void, OS_CODE) class_Os_Unused::IncrementCounter(void){
+FUNC(void, OS_CODE) class_Os_Functionality::IncrementCounter(void){
 }
 
-FUNC(void, OS_CODE) class_Os_Unused::GetCounterValue(void){
+FUNC(void, OS_CODE) class_Os_Functionality::GetCounterValue(void){
 }
 
-FUNC(void, OS_CODE) class_Os_Unused::GetElapsedValue(void){
+FUNC(void, OS_CODE) class_Os_Functionality::GetElapsedValue(void){
 }
 
-FUNC(void, OS_CODE) class_Os_Unused::TerminateApplication(void){
+FUNC(void, OS_CODE) class_Os_Functionality::TerminateApplication(void){
 }
 
-FUNC(void, OS_CODE) class_Os_Unused::AllowAccess(void){
+FUNC(void, OS_CODE) class_Os_Functionality::AllowAccess(void){
 }
 
-FUNC(void, OS_CODE) class_Os_Unused::GetApplicationState(void){
+FUNC(void, OS_CODE) class_Os_Functionality::GetApplicationState(void){
 }
 
-FUNC(void, OS_CODE) class_Os_Unused::GetNumberOfActivatedCores(void){
+FUNC(void, OS_CODE) class_Os_Functionality::GetNumberOfActivatedCores(void){
 }
 
-FUNC(void, OS_CODE) class_Os_Unused::GetCoreId(void){
+FUNC(void, OS_CODE) class_Os_Functionality::GetCoreId(void){
 }
 
-FUNC(void, OS_CODE) class_Os_Unused::StartCore(void){
+FUNC(void, OS_CODE) class_Os_Functionality::StartCore(void){
 }
 
-FUNC(void, OS_CODE) class_Os_Unused::StartNonAutosarCore(void){
+FUNC(void, OS_CODE) class_Os_Functionality::StartNonAutosarCore(void){
 }
 
-FUNC(void, OS_CODE) class_Os_Unused::GetSpinlock(void){
+FUNC(void, OS_CODE) class_Os_Functionality::GetSpinlock(void){
 }
 
-FUNC(void, OS_CODE) class_Os_Unused::ReleaseSpinlock(void){
+FUNC(void, OS_CODE) class_Os_Functionality::ReleaseSpinlock(void){
 }
 
-FUNC(void, OS_CODE) class_Os_Unused::TryToGetSpinlock(void){
+FUNC(void, OS_CODE) class_Os_Functionality::TryToGetSpinlock(void){
 }
 
-FUNC(void, OS_CODE) class_Os_Unused::ShutdownAllCores(void){
+FUNC(void, OS_CODE) class_Os_Functionality::ShutdownAllCores(void){
 }
 
-FUNC(void, OS_CODE) class_Os_Unused::ControlIdle(void){
+FUNC(void, OS_CODE) class_Os_Functionality::ControlIdle(void){
 }
 
 /******************************************************************************/
