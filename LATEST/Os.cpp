@@ -7,6 +7,7 @@
 /* #INCLUDES                                                                  */
 /******************************************************************************/
 #include "Module.hpp"
+#include "Os_core.hpp"
 #include "infOs_EcuM.hpp"
 #include "infOs_Dcm.hpp"
 #include "infOs_SchM.hpp"
