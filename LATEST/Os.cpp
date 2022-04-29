@@ -7,10 +7,9 @@
 /* #INCLUDES                                                                  */
 /******************************************************************************/
 #include "Module.hpp"
+#include "CfgOs.hpp"
 #include "Os_core.hpp"
-#include "infOs_EcuM.hpp"
-#include "infOs_Dcm.hpp"
-#include "infOs_SchM.hpp"
+#include "infOs.hpp"
 
 /******************************************************************************/
 /* #DEFINES                                                                   */
@@ -34,6 +33,7 @@
 /******************************************************************************/
 class module_Os:
       public abstract_module
+      //TBD: move to infOs.hpp ?
    ,  public infOs_EcuM
    ,  public class_Os_Functionality
 {
@@ -45,9 +45,7 @@ class module_Os:
       );
       FUNC(void, OS_CODE) DeInitFunction (void);
       FUNC(void, OS_CODE) MainFunction   (void);
-
-      FUNC(void, OS_CODE) Start          (void);
-      FUNC(void, OS_CODE) Shutdown       (void);
+      OS_CORE_FUNCTIONALITIES
 };
 
 extern VAR(module_Os, OS_VAR) Os;
@@ -63,7 +61,6 @@ CONSTP2VAR(infOs_EcuM,    OS_VAR, OS_CONST) gptrinfOs_EcuM       = &Os;
 /******************************************************************************/
 /* PARAMS                                                                     */
 /******************************************************************************/
-#include "CfgOs.hpp"
 
 /******************************************************************************/
 /* OBJECTS                                                                    */

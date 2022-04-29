@@ -12,7 +12,7 @@
 /******************************************************************************/
 /* #DEFINES                                                                   */
 /******************************************************************************/
-#define OS_COREFUNCTIONALITIES                                                 \
+#define OS_CORE_FUNCTIONALITIES                                                \
               FUNC(void, OS_CODE) Start                      (void);           \
               FUNC(void, OS_CODE) Shutdown                   (void);           \
               FUNC(void, OS_CODE) GetResource                (void);           \
@@ -51,7 +51,7 @@
               FUNC(void, OS_CODE) ShutdownAllCores           (void);           \
               FUNC(void, OS_CODE) ControlIdle                (void);           \
 
-#define OS_COREFUNCTIONALITIES_VIRTUAL                                         \
+#define OS_CORE_FUNCTIONALITIES_VIRTUAL                                        \
       virtual FUNC(void, OS_CODE) Start                      (void) = 0;       \
       virtual FUNC(void, OS_CODE) Shutdown                   (void) = 0;       \
       virtual FUNC(void, OS_CODE) GetResource                (void) = 0;       \
@@ -99,7 +99,7 @@
 /******************************************************************************/
 class class_Os_Functionality{
    public:
-      OS_COREFUNCTIONALITIES_VIRTUAL
+      OS_CORE_FUNCTIONALITIES_VIRTUAL
 };
 
 /******************************************************************************/
