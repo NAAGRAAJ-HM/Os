@@ -128,7 +128,7 @@ FUNC(void, OS_CODE) module_Os::InitFunction(
             0 //TBD: IdModule
          ,  0 //TBD: IdInstance
          ,  0 //TBD: IdApi
-         ,  0 //TBD: IdError
+         ,  OS_E_UNINIT
       );
 #endif
    }
@@ -148,7 +148,7 @@ FUNC(void, OS_CODE) module_Os::DeInitFunction(void){
             0 //TBD: IdModule
          ,  0 //TBD: IdInstance
          ,  0 //TBD: IdApi
-         ,  0 //TBD: IdError
+         ,  OS_E_UNINIT
       );
 #endif
    }
@@ -167,7 +167,7 @@ FUNC(void, OS_CODE) module_Os::MainFunction(void){
             0 //TBD: IdModule
          ,  0 //TBD: IdInstance
          ,  0 //TBD: IdApi
-         ,  0 //TBD: IdError
+         ,  OS_E_UNINIT
       );
 #endif
    }
