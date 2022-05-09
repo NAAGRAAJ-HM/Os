@@ -37,6 +37,13 @@ class module_Os:
    ,  public infOs_EcuM
    ,  public class_Os_Functionality
 {
+   private:
+/******************************************************************************/
+/* OBJECTS                                                                    */
+/******************************************************************************/
+            Std_TypeReturn          IsInitDone{E_NOT_OK};
+      const CfgModule_TypeAbstract* lptrCfg{(CfgModule_TypeAbstract*)NULL_PTR};
+
    public:
       module_Os(Std_TypeVersionInfo lVersionInfo) : abstract_module(lVersionInfo){
       }
