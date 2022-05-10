@@ -104,7 +104,10 @@ FUNC(void, OS_CODE) module_Os::InitFunction(
    CONSTP2CONST(CfgModule_TypeAbstract, OS_CONFIG_DATA, OS_APPL_CONST) lptrCfgModule
 ){
 #if(STD_ON == Os_InitCheck)
-   if(E_OK != IsInitDone){
+   if(
+         E_OK
+      != IsInitDone
+   ){
 #endif
       if(NULL_PTR != lptrCfgModule){
          if(STD_HIGH){
@@ -142,7 +145,10 @@ FUNC(void, OS_CODE) module_Os::InitFunction(
 
 FUNC(void, OS_CODE) module_Os::DeInitFunction(void){
 #if(STD_ON == Os_InitCheck)
-   if(E_OK == IsInitDone){
+   if(
+         E_OK
+      == IsInitDone
+   ){
 #endif
 #if(STD_ON == Os_InitCheck)
       IsInitDone = E_NOT_OK;
@@ -162,7 +168,10 @@ FUNC(void, OS_CODE) module_Os::DeInitFunction(void){
 
 FUNC(void, OS_CODE) module_Os::MainFunction(void){
 #if(STD_ON == Os_InitCheck)
-   if(E_OK == IsInitDone){
+   if(
+         E_OK
+      == IsInitDone
+   ){
 #endif
 #if(STD_ON == Os_InitCheck)
    }
