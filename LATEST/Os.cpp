@@ -9,7 +9,7 @@
 #include "Module.hpp"
 #include "CfgOs.hpp"
 #include "Os_core.hpp"
-#include "infOs.hpp"
+#include "infOs_Exp.hpp"
 
 /******************************************************************************/
 /* #DEFINES                                                                   */
@@ -32,6 +32,7 @@
 /* TYPEDEFS                                                                   */
 /******************************************************************************/
 class module_Os:
+   INTERFACES_EXPORTED_OS
       public abstract_module
       //TBD: move to infOs.hpp ?
    ,  public infOs_EcuM
