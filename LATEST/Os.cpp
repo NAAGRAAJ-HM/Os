@@ -32,7 +32,7 @@
 /* TYPEDEFS                                                                   */
 /******************************************************************************/
 class module_Os:
-   INTERFACES_EXPORTED_OS
+      INTERFACES_EXPORTED_OS
       public abstract_module
       //TBD: move to infOs.hpp ?
    ,  public infOs_EcuM
