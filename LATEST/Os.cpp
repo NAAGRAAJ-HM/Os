@@ -10,6 +10,7 @@
 #include "CfgOs.hpp"
 #include "Os_core.hpp"
 #include "infOs_Exp.hpp"
+#include "infOs_Imp.hpp"
 
 /******************************************************************************/
 /* #DEFINES                                                                   */
