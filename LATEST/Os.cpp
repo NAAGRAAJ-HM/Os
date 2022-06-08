@@ -77,7 +77,7 @@ CONSTP2VAR(infOs_EcuM,    OS_VAR, OS_CONST) gptrinfOs_EcuM       = &Os;
 VAR(module_Os, OS_VAR) Os(
    {
 #if(STD_ON == _ReSIM)
-// char strModuleName[6];
+   char strModuleName[6] = "OS";
 #else
 #endif
          OS_AR_RELEASE_VERSION_MAJOR
