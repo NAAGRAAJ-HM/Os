@@ -97,12 +97,7 @@ FUNC(void, OS_CODE) module_Os::InitFunction(
    ){
 #endif
       if(NULL_PTR != lptrCfgModule){
-         if(STD_HIGH){
-            lptrCfg = lptrCfgModule;
-         }
-         else{
-            lptrCfg = &PBcfgOs;
-         }
+         lptrCfg = lptrCfgModule;
       }
       else{
 #if(STD_ON == Os_DevErrorDetect)
