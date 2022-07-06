@@ -7,9 +7,7 @@
 /* #INCLUDES                                                                  */
 /******************************************************************************/
 #include "Module.hpp"
-#include "CfgOs.hpp"
-#include "Os_core.hpp"
-#include "infOs_Exp.hpp"
+#include "Os.hpp"
 #include "infOs_Imp.hpp"
 
 /******************************************************************************/
@@ -32,26 +30,6 @@
 /******************************************************************************/
 /* TYPEDEFS                                                                   */
 /******************************************************************************/
-class module_Os:
-      INTERFACES_EXPORTED_OS
-   ,  public abstract_module
-   ,  public class_Os_Functionality
-{
-   private:
-/******************************************************************************/
-/* OBJECTS                                                                    */
-/******************************************************************************/
-
-   public:
-      FUNC(void, OS_CODE) InitFunction(
-         CONSTP2CONST(CfgModule_TypeAbstract, OS_CONFIG_DATA, OS_APPL_CONST) lptrCfgModule
-      );
-      FUNC(void, OS_CODE) DeInitFunction (void);
-      FUNC(void, OS_CODE) MainFunction   (void);
-      OS_CORE_FUNCTIONALITIES
-};
-
-extern VAR(module_Os, OS_VAR) Os;
 
 /******************************************************************************/
 /* CONSTS                                                                     */
