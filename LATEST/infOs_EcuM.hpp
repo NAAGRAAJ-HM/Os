@@ -32,8 +32,7 @@ class infOs_EcuM{
 /******************************************************************************/
 /* CONSTS                                                                     */
 /******************************************************************************/
-extern CONSTP2VAR(infEcuMClient, OS_VAR, OS_CONST) gptrinfEcuMClient_Os;
-extern CONSTP2VAR(infOs_EcuM,    OS_VAR, OS_CONST) gptrinfOs_EcuM;
+extern CONSTP2VAR(infOs_EcuM, OS_VAR, OS_CONST) gptrinfOs_EcuM;
 
 /******************************************************************************/
 /* PARAMS                                                                     */
