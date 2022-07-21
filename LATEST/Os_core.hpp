@@ -13,6 +13,7 @@
 /* #DEFINES                                                                   */
 /******************************************************************************/
 #define OS_CORE_FUNCTIONALITIES                                                \
+              FUNC(void, OS_CODE) Activate_Task              (void);           \
               FUNC(void, OS_CODE) Start                      (void);           \
               FUNC(void, OS_CODE) Shutdown                   (void);           \
               FUNC(void, OS_CODE) GetResource                (void);           \
@@ -52,6 +53,7 @@
               FUNC(void, OS_CODE) ControlIdle                (void);           \
 
 #define OS_CORE_FUNCTIONALITIES_VIRTUAL                                        \
+      virtual FUNC(void, OS_CODE) Activate_Task              (void) = 0;       \
       virtual FUNC(void, OS_CODE) Start                      (void) = 0;       \
       virtual FUNC(void, OS_CODE) Shutdown                   (void) = 0;       \
       virtual FUNC(void, OS_CODE) GetResource                (void) = 0;       \

@@ -34,7 +34,6 @@
 /******************************************************************************/
 /* CONSTS                                                                     */
 /******************************************************************************/
-CONSTP2VAR(infOs_EcuM, OS_VAR, OS_CONST) gptrinfOs_EcuM = &Os;
 
 /******************************************************************************/
 /* PARAMS                                                                     */
@@ -48,17 +47,6 @@ VAR(module_Os, OS_VAR) Os;
 /******************************************************************************/
 /* FUNCTIONS                                                                  */
 /******************************************************************************/
-static FUNC(void, OS_CODE) Activate_Task(
-   void
-){
-//TBD: <generic service> arguement must contain reference to Task
-
-//TBD: make scope and accessibility to global
-
-//TBD: create task for EcuM startup two operations
-   gptrinfEcuM_Os->StartupTwo();
-}
-
 FUNC(void, OS_CODE) module_Os::InitFunction(
    CONSTP2CONST(CfgModule_TypeAbstract, OS_CONFIG_DATA, OS_APPL_CONST) lptrCfgModule
 ){
@@ -146,21 +134,32 @@ FUNC(void, OS_CODE) module_Os::MainFunction(
 #endif
 }
 
+FUNC(void, OS_CODE) module_Os::Activate_Task(
+   void
+){
+//TBD: <generic service> arguement must contain reference to Task
+
+//TBD: make scope and accessibility to global
+
+//TBD: create task for EcuM startup two operations
+   ((CfgOs_Type*)lptrCfg)->ptrinfEcuM_Os->StartupTwo();
+}
+
 FUNC(void, OS_CODE) module_Os::Start(
    void
 ){
-   gptrinfSwcServiceOs_Os->StartupHook();
+   ((CfgOs_Type*)lptrCfg)->ptrinfSwcServiceOs_Os->StartupHook();
    Activate_Task();
 
    while(1 /* TBD: State machine as per AUTOSAR */){
-      gptrinfSwcServiceOs_Os->TASK_Idle();
+      ((CfgOs_Type*)lptrCfg)->ptrinfSwcServiceOs_Os->TASK_Idle();
    }
 }
 
 FUNC(void, OS_CODE) module_Os::Shutdown(
    void
 ){
-   gptrinfSwcServiceOs_Os->ShutdownHook();
+   ((CfgOs_Type*)lptrCfg)->ptrinfSwcServiceOs_Os->ShutdownHook();
 }
 
 FUNC(void, OS_CODE) module_Os::GetResource(
