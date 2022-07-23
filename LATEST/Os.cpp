@@ -142,24 +142,24 @@ FUNC(void, OS_CODE) module_Os::Activate_Task(
 //TBD: make scope and accessibility to global
 
 //TBD: create task for EcuM startup two operations
-   lptrConstOs->ptrinfEcuM_Os->StartupTwo();
+   lptrConst->ptrinfEcuM_Os->StartupTwo();
 }
 
 FUNC(void, OS_CODE) module_Os::Start(
    void
 ){
-   lptrConstOs->ptrinfSwcServiceOs_Os->StartupHook();
+   lptrConst->ptrinfSwcServiceOs_Os->StartupHook();
    Activate_Task();
 
    while(1 /* TBD: State machine as per AUTOSAR */){
-      lptrConstOs->ptrinfSwcServiceOs_Os->TASK_Idle();
+      lptrConst->ptrinfSwcServiceOs_Os->TASK_Idle();
    }
 }
 
 FUNC(void, OS_CODE) module_Os::Shutdown(
    void
 ){
-   lptrConstOs->ptrinfSwcServiceOs_Os->ShutdownHook();
+   lptrConst->ptrinfSwcServiceOs_Os->ShutdownHook();
 }
 
 FUNC(void, OS_CODE) module_Os::GetResource(
