@@ -32,14 +32,15 @@ class module_Os:
 /******************************************************************************/
 /* OBJECTS                                                                    */
 /******************************************************************************/
-      const ConstOs_Type* lptrConst;
+      const ConstOs_Type* lptrConst = (ConstOs_Type*)NULL_PTR;
 
    public:
 /******************************************************************************/
 /* FUNCTIONS                                                                  */
 /******************************************************************************/
       FUNC(void, OS_CODE) InitFunction(
-         CONSTP2CONST(CfgModule_TypeAbstract, OS_CONFIG_DATA, OS_APPL_CONST) lptrCfgModule
+            CONSTP2CONST(ConstModule_TypeAbstract, OS_CONST,       OS_APPL_CONST) lptrConstModule
+         ,  CONSTP2CONST(CfgModule_TypeAbstract,   OS_CONFIG_DATA, OS_APPL_CONST) lptrCfgModule
       );
       FUNC(void, OS_CODE) DeInitFunction (void);
       FUNC(void, OS_CODE) MainFunction   (void);
