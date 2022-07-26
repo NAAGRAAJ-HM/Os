@@ -61,7 +61,7 @@ FUNC(void, OS_CODE) module_Os::InitFunction(
             (NULL_PTR != lptrConstModule)
          && (NULL_PTR != lptrCfgModule)
       ){
-         lptrConst = lptrConstModule;
+         lptrConst = (const ConstOs_Type*)lptrConstModule;
          lptrCfg   = lptrCfgModule;
       }
       else{
