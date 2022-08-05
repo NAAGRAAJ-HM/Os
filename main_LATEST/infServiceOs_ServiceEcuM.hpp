@@ -25,8 +25,8 @@ class infServiceOs_ServiceEcuM{
 /******************************************************************************/
 /* FUNCTIONS                                                                  */
 /******************************************************************************/
-      virtual FUNC(void, OS_CODE) Start    (void) = 0;
-      virtual FUNC(void, OS_CODE) Shutdown (void) = 0;
+      virtual FUNC(void, SERVICEOS_CODE) Start    (void) = 0;
+      virtual FUNC(void, SERVICEOS_CODE) Shutdown (void) = 0;
 };
 
 /******************************************************************************/
