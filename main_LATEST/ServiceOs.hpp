@@ -24,7 +24,7 @@
 /* TYPEDEFS                                                                   */
 /******************************************************************************/
 class module_ServiceOs:
-      INTERFACES_EXMCALPORTED_SERVICEOS
+      INTERFACES_EXPORTED_SERVICEOS
    ,  public abstract_module
    ,  public class_ServiceOs_Functionality
 {
