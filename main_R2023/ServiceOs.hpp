@@ -1,13 +1,13 @@
 #pragma once
 /******************************************************************************/
-/* File   : ServiceOs.hpp                                                            */
+/* File   : ServiceOs.hpp                                                     */
 /* Author : NAGARAJA HM (c) since 1982. All rights reserved.                  */
 /******************************************************************************/
 
 /******************************************************************************/
 /* #INCLUDES                                                                  */
 /******************************************************************************/
-#include "ConstServiceOs.hpp"
+#include "infServiceOs_ServiceNvM_Types.hpp"
 #include "CfgServiceOs.hpp"
 #include "ServiceOs_core.hpp"
 #include "infServiceOs_Exp.hpp"
