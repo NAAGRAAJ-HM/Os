@@ -32,14 +32,14 @@ class module_ServiceOs:
 /******************************************************************************/
 /* OBJECTS                                                                    */
 /******************************************************************************/
-      const ConstServiceOs_Type* lptrConst = (ConstServiceOs_Type*)NULL_PTR;
+      const ConstModule_TypeAbstract* lptrNvMBlocksRom = (ConstModule_TypeAbstract*)NULL_PTR;
 
    public:
 /******************************************************************************/
 /* FUNCTIONS                                                                  */
 /******************************************************************************/
       FUNC(void, SERVICEOS_CODE) InitFunction(
-            CONSTP2CONST(ConstModule_TypeAbstract, SERVICEOS_CONST,       SERVICEOS_APPL_CONST) lptrConstModule
+            CONSTP2CONST(ConstModule_TypeAbstract, SERVICEOS_CONST,       SERVICEOS_APPL_CONST) lptrNvMBlocksRomModule
          ,  CONSTP2CONST(CfgModule_TypeAbstract,   SERVICEOS_CONFIG_DATA, SERVICEOS_APPL_CONST) lptrCfgModule
       );
       FUNC(void, SERVICEOS_CODE) DeInitFunction (void);

@@ -13,19 +13,10 @@
 /******************************************************************************/
 /* #DEFINES                                                                   */
 /******************************************************************************/
-#define SERVICEOS_AR_RELEASE_VERSION_MAJOR                                     4
-#define SERVICEOS_AR_RELEASE_VERSION_MINOR                                     3
 
 /******************************************************************************/
 /* MACROS                                                                     */
 /******************************************************************************/
-#if(SERVICEOS_AR_RELEASE_VERSION_MAJOR != STD_AR_RELEASE_VERSION_MAJOR)
-   #error "Incompatible SERVICEOS_AR_RELEASE_VERSION_MAJOR!"
-#endif
-
-#if(SERVICEOS_AR_RELEASE_VERSION_MINOR != STD_AR_RELEASE_VERSION_MINOR)
-   #error "Incompatible SERVICEOS_AR_RELEASE_VERSION_MINOR!"
-#endif
 
 /******************************************************************************/
 /* TYPEDEFS                                                                   */
@@ -48,7 +39,7 @@ VAR(module_ServiceOs, SERVICEOS_VAR) ServiceOs;
 /* FUNCTIONS                                                                  */
 /******************************************************************************/
 FUNC(void, SERVICEOS_CODE) module_ServiceOs::InitFunction(
-      CONSTP2CONST(ConstModule_TypeAbstract, SERVICEOS_CONST,       SERVICEOS_APPL_CONST) lptrConstModule
+      CONSTP2CONST(ConstModule_TypeAbstract, SERVICEOS_CONST,       SERVICEOS_APPL_CONST) lptrNvMBlocksRomModule
    ,  CONSTP2CONST(CfgModule_TypeAbstract,   SERVICEOS_CONFIG_DATA, SERVICEOS_APPL_CONST) lptrCfgModule
 ){
 #if(STD_ON == ServiceOs_InitCheck)
@@ -58,10 +49,10 @@ FUNC(void, SERVICEOS_CODE) module_ServiceOs::InitFunction(
    ){
 #endif
       if(
-            (NULL_PTR != lptrConstModule)
+            (NULL_PTR != lptrNvMBlocksRomModule)
          && (NULL_PTR != lptrCfgModule)
       ){
-         lptrConst = (const ConstServiceOs_Type*)lptrConstModule;
+         lptrNvMBlocksRom = lptrNvMBlocksRomModule;
          lptrCfg   = lptrCfgModule;
       }
       else{
@@ -147,24 +138,24 @@ FUNC(void, SERVICEOS_CODE) module_ServiceOs::Activate_Task(
 //TBD: make scope and accessibility to global
 
 //TBD: create task for ServiceEcuM startup two operations
-   lptrConst->ptrinfServiceEcuM_ServiceOs->StartupTwo();
+   ((NvM_BlocksRom_ServiceOs_Type*)lptrNvMBlocksRom)->ptrinfServiceEcuM_ServiceOs->StartupTwo(); // TBD: OOPS concepts
 }
 
 FUNC(void, SERVICEOS_CODE) module_ServiceOs::Start(
    void
 ){
-   lptrConst->ptrinfServiceSwcOs_ServiceOs->StartupHook();
+   ((NvM_BlocksRom_ServiceOs_Type*)lptrNvMBlocksRom)->ptrinfServiceSwcOs_ServiceOs->StartupHook();
    Activate_Task();
 
    while(1 /* TBD: State machine as per AUTSERVICEOSAR */){
-      lptrConst->ptrinfServiceSwcOs_ServiceOs->TASK_Idle();
+      ((NvM_BlocksRom_ServiceOs_Type*)lptrNvMBlocksRom)->ptrinfServiceSwcOs_ServiceOs->TASK_Idle();
    }
 }
 
 FUNC(void, SERVICEOS_CODE) module_ServiceOs::Shutdown(
    void
 ){
-   lptrConst->ptrinfServiceSwcOs_ServiceOs->ShutdownHook();
+   ((NvM_BlocksRom_ServiceOs_Type*)lptrNvMBlocksRom)->ptrinfServiceSwcOs_ServiceOs->ShutdownHook();
 }
 
 FUNC(void, SERVICEOS_CODE) module_ServiceOs::GetResource(
